@@ -8,47 +8,90 @@
     <script src="jquery-3.6.3.min.js"></script>
     <script src="alpine.js" defer></script>
     <script src="translations.js"></script>
+    <style>
+        /* إضافة الصورة في الأعلى */
+        .header-logo {
+            background-image: url('img/image.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 60px;
+            width: 200px;
+            margin: 0 auto 20px;
+        }
+        
+        /* إزالة background-frame وتحسين المظهر */
+        body {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+        
+        .main-container {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .card-style {
+            background: rgba(51, 65, 85, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        
+        .nav-button {
+            background: rgba(71, 85, 105, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background: rgba(71, 85, 105, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .nav-button.active {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.5);
+            color: #10b981;
+        }
+    </style>
 </head>
 <body class="bg-slate-900 text-white font-sans overflow-hidden">
-    <!-- Main Container -->
-    <div class="h-screen w-full relative">
-        <!-- Header with Logo -->
-        <div class="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-slate-800/90 to-transparent p-6">
-            <div class="flex items-center justify-center">
-                <img src="img/image.png" alt="Underground Logo" class="h-16 w-auto">
-            </div>
-        </div>
-
+    <!-- إضافة الصورة في الأعلى -->
+    <div class="header-logo"></div>
+    
+    <!-- Main Container بدون background-frame -->
+    <div class="h-screen w-full relative main-container rounded-lg mx-4 my-2" style="height: calc(100vh - 100px);">
+        
         <!-- Main Interface -->
-        <div class="flex h-full pt-24">
+        <div class="flex h-full">
             <!-- Left Sidebar Navigation -->
-            <div class="w-48 bg-slate-800/50 backdrop-blur-sm border-r border-slate-700/50 flex flex-col">
+            <div class="w-48 flex flex-col p-4">
                 <!-- Navigation Items -->
-                <div class="flex-1 p-4 space-y-2">
-                    <button class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-600/30 transition-all duration-200">
-                        <div class="w-6 h-6 bg-emerald-500 rounded flex items-center justify-center">
-                            <span class="text-xs font-bold">⌂</span>
+                <div class="flex-1 space-y-3">
+                    <button class="nav-button active w-full flex items-center space-x-3 px-4 py-3 rounded-lg">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <span class="text-sm font-bold">⌂</span>
                         </div>
                         <span class="text-sm font-medium">Homepage</span>
                     </button>
                     
-                    <button class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-slate-700/50 hover:text-white transition-all duration-200">
-                        <div class="w-6 h-6 bg-gray-600 rounded flex items-center justify-center">
-                            <span class="text-xs font-bold">⊞</span>
+                    <button class="nav-button w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <span class="text-sm font-bold">⊞</span>
                         </div>
                         <span class="text-sm font-medium">Marketplace</span>
                     </button>
                     
-                    <button class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-slate-700/50 hover:text-white transition-all duration-200">
-                        <div class="w-6 h-6 bg-gray-600 rounded flex items-center justify-center">
-                            <span class="text-xs font-bold">⚡</span>
+                    <button class="nav-button w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <span class="text-sm font-bold">⚡</span>
                         </div>
                         <span class="text-sm font-medium">Auction</span>
                     </button>
                     
-                    <button class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-slate-700/50 hover:text-white transition-all duration-200">
-                        <div class="w-6 h-6 bg-gray-600 rounded flex items-center justify-center">
-                            <span class="text-xs font-bold">🏁</span>
+                    <button class="nav-button w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <span class="text-sm font-bold">🏁</span>
                         </div>
                         <span class="text-sm font-medium">Races</span>
                     </button>
@@ -59,7 +102,7 @@
             <div class="flex-1 p-6">
                 <!-- Level Display -->
                 <div class="mb-6">
-                    <div class="flex items-center justify-between bg-slate-800/30 backdrop-blur-sm rounded-xl p-4 border border-slate-700/50">
+                    <div class="flex items-center justify-between card-style rounded-xl p-4">
                         <div class="flex items-center space-x-4">
                             <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
                                 <span class="text-xl font-bold text-black">⚡</span>
@@ -80,7 +123,7 @@
                 <div class="grid grid-cols-12 gap-6 h-full">
                     <!-- Active Contract Card -->
                     <div class="col-span-8">
-                        <div class="bg-slate-800/30 backdrop-blur-sm rounded-xl border border-emerald-500/30 p-6 h-full">
+                        <div class="card-style rounded-xl border border-emerald-500/30 p-6 h-full">
                             <!-- Contract Header -->
                             <div class="flex items-center justify-between mb-6">
                                 <h3 class="text-xl font-semibold text-white">Active Contract</h3>
@@ -148,7 +191,7 @@
                     <!-- Right Side Actions -->
                     <div class="col-span-4 space-y-4">
                         <!-- Transfer Contract -->
-                        <div class="bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-4">
+                        <div class="card-style rounded-xl p-4">
                             <div class="flex items-center space-x-3 mb-3">
                                 <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
                                     <span class="text-blue-400 text-sm">⇄</span>
@@ -162,7 +205,7 @@
                         </div>
 
                         <!-- Auction Contract -->
-                        <div class="bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-4">
+                        <div class="card-style rounded-xl p-4">
                             <div class="flex items-center space-x-3 mb-3">
                                 <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center">
                                     <span class="text-purple-400 text-sm">🔨</span>
@@ -176,7 +219,7 @@
                         </div>
 
                         <!-- Quick Stats -->
-                        <div class="bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-4">
+                        <div class="card-style rounded-xl p-4">
                             <h4 class="text-white font-medium mb-3">Quick Stats</h4>
                             <div class="space-y-2">
                                 <div class="flex justify-between">
@@ -199,7 +242,7 @@
         </div>
 
         <!-- Bottom Status Bar -->
-        <div class="absolute bottom-0 left-0 right-0 bg-slate-800/50 backdrop-blur-sm border-t border-slate-700/50 px-6 py-3">
+        <div class="absolute bottom-0 left-0 right-0 card-style border-t border-slate-700/50 px-6 py-3 rounded-b-lg">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
                     <div class="flex items-center space-x-2">
